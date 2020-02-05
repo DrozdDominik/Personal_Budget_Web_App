@@ -111,3 +111,14 @@ i.fa-facebook-square:hover, i.fa-envelope:hover
  transform: scale(1.1);
 }
 
+.main__registration-text
+{
+    position: relative;
+    left: 40%;
+    width: 20%;
+    height: 10%;
+    background-image: url('/img/background.png');
+    margin-top: 10px;
+    color: #095f37;
+    font-size: 20px;
+}
