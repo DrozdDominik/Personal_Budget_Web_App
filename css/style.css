@@ -163,3 +163,62 @@ i.fa-facebook-square:hover, i.fa-envelope:hover
 {
     transform: scale(0.95);
 }
+
+
+.form
+{
+    display: flex;
+    align-items: flex-start;
+}
+
+.form__label
+{
+    margin: 0.5rem 0 0.5rem 1rem;
+}
+
+.form__amount,
+.form__date,
+.form__payment,
+.form__category
+{
+    margin-left: 1rem;
+}
+
+
+.form__comment
+{
+    margin: 0 auto;  
+}
+
+
+.form__add,
+.form__add:link,
+.form__add:visited,
+.form__cancel,
+.form__cancel:link,
+.form__cancel:visited
+{
+    width: 20rem;
+    text-transform:uppercase;
+    text-decoration:none;
+    text-align: center;
+    padding:1.5rem 4rem;
+    margin: 1rem auto;
+    display:block;
+    border-radius:10rem;
+    transition:.2s;
+    cursor:pointer;
+    font-size: 1.8rem;
+    background-color: rgb(20, 197, 153);
+}
+
+.form__add:hover,
+.form__cancel:hover
+{
+    transform: scale(0.95);
+}
+
+.form__comment
+{
+    resize: none;    
+}

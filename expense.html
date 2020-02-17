@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Add expense</title>
+    <link rel="stylesheet" href="css/style.css" type="text/css">
+    <link rel="stylesheet" href="node_modules/@fortawesome/fontawesome-free/css/all.min.css">
+    <link rel="shortcut icon" type="image/ico" href="img/favicon.png">
+</head>
+<body>
+    <div class="wrapper">
+        <header class="header">
+            <div class="header__slogan">Wydatki</div>
+            <img src="img/logo.png" alt="" class="header__logo">
+        </header>
+        <main class="main">
+            <div class="main__description">Dodaj wydatek:</div>            
+            <form action="" class="form">
+                <label class="form__label">Kwota<input type="number" min="0.01" step="0.01" class="form__amount" required></label>
+                <label class="form__label">Data<input type="date" class="form__date" value="" required></label>
+                <label class="form__label">Sposób płatności
+                    <select class="form__payment" name="payment" required>
+                        <option value="cash" name="cash">Gotówka</option>
+                        <option value="debit" name="debit">Karta debetowa</option>
+                        <option value="credit" name="credit">Karta kredytowa</option>
+                    </select>
+                </label>
+                <label class="form__label">Kategoria  
+                    <select class="form__category" name="category" required>
+                        <option value="food" name="food">Jedzenie</option>
+                        <option value="flat" name="flat">Mieszkanie</option>
+                        <option value="transport" name="transport">Transport</option>
+                        <option value="telecommunication" name="telecommunication">Telekomunikacja</option>
+                        <option value="healthcare" name="healthcare">Opieka zdrowotna</option>
+                        <option value="cloth" name="cloth">Ubranie</option>
+                        <option value="hygiene" name="hygiene">Higiena</option>
+                        <option value="children" name="children">Dzieci</option>
+                        <option value="entertainment" name="entertainment">Rozrywka</option>
+                        <option value="trip" name="trip">Wycieczka</option>
+                        <option value="training" name="training">Szkolenia</option>
+                        <option value="books" name="books">Książki</option>
+                        <option value="savings" name="savings">Oszczędności</option>
+                        <option value="pension" name="pension">Na emeryturę</option>
+                        <option value="debts" name="debts">Spłata długów</option>
+                        <option value="donation" name="donation">Darownizna</option>
+                        <option value="other" name="other">Inne wydatki</option>
+                </select>
+                </label>
+                <textarea class="form__comment" placeholder="Komentarz" name="comment" rows="4" cols="30"></textarea>
+                <input type="submit" value="Dodaj!" class="form__add">
+                <input type="button" value="Anuluj" class="form__cancel">
+            </form>
+        </main>
+        <footer class="footer">
+            <div class="footer__author">Kontakt z autorem: 
+                <a href="#"><i class="fab fa-facebook-square"></i></a> 
+                <a href="#"><i class="fas fa-envelope"></i></a>
+            </div>
+            <div class="footer__copyright">Wszelkie prawa zastrzeżone &copy; Dominik Drozd</div>
+        </footer>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
