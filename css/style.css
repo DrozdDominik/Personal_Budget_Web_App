@@ -222,3 +222,92 @@ i.fa-facebook-square:hover, i.fa-envelope:hover
 {
     resize: none;    
 }
+
+.nav__label
+{
+    position: absolute;
+    right: 15%;
+    top: 0;
+    font-size: 3rem;
+    width: 20%;
+    color: rgb(20, 197, 153);
+    cursor: pointer;
+}
+
+.nav__menu
+{
+    border: none;
+    font-size: 2.5rem;
+    color: rgb(20, 197, 153);
+    background-image: url('/img/background.png');
+    width: 110%;
+}
+
+.nav__date
+{
+    visibility: hidden;
+    position: absolute;
+    right: 0;
+    top: 10%;
+    font-size: 2rem;
+    color: rgb(20, 197, 153);
+}
+
+.nav__container
+{
+    visibility: hidden;
+    position: absolute;
+    right: 15%;
+    top: 5%;
+    width: 20%;
+    font-size: 3rem;
+    color: rgb(20, 197, 153);
+}
+
+.nav__current-month:hover,
+.nav__previous-month:hover,
+.nav__current-year:hover,
+.nav__custom:hover
+{   
+     background-color: rgb(20, 197, 153);
+     color: #fff;
+}
+
+
+.nav__visible
+{
+    position: absolute;
+    top: 0;
+    right: 2%;
+    font-size: 3rem;
+    color: rgb(20, 197, 153);
+}
+
+table,
+th,
+td
+{
+    border: 1px solid black;
+    border-collapse: collapse;
+    text-align: center;
+}
+
+.main__income,
+.main__expense,
+.main__balance
+{
+    font-size: 2rem;
+    color: rgb(20, 197, 153);
+}
+
+.main__tables
+{
+    display: flex;
+    justify-content: space-around;
+}
+
+#piechart
+{
+    width: 30%;
+    height: 30%;
+}
