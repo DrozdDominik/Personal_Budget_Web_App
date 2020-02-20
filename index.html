@@ -1,36 +1,104 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="pl">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Login</title>
-    <link rel="stylesheet" href="css/style.css" type="text/css">
-    <link rel="stylesheet" href="node_modules/@fortawesome/fontawesome-free/css/all.min.css">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.rawgit.com/tonystar/bootstrap-float-label/v4.0.2/bootstrap-float-label.min.css"/>
     <link rel="shortcut icon" type="image/ico" href="img/favicon.png">
+    <link rel="stylesheet" href="node_modules/@fortawesome/fontawesome-free/css/all.css">
+    <title>Personal Budget</title>
 </head>
 <body>
-    <div class="wrapper">
-        <header class="header">
-            <div class="header__slogan">Witaj w aplikacji "Budżet osobisty"! </div>
-            <img src="img/logo.png" alt="" class="header__logo">
-        </header>
-        <main class="main">
-            <div class="main__description">Zaloguj się:</div>            
-            <form action="" class="form">
-                <label>e-mail <input type="email" class="form__email"></label>
-                <label>Hasło <input type="password" class="form__password"></label>
-                <input type="submit" value="Zaloguj się!" class="form__submit">
-            </form>
-            <a href="registration.html" class="main__registration-link"><div class="main__registration-text" >Nie masz konta? Zarejestruj się tutaj!</div></a>
-        </main>
-        <footer class="footer">
-            <div class="footer__author">Kontakt z autorem: 
-                <a href="#"><i class="fab fa-facebook-square"></i></a> 
-                <a href="#"><i class="fas fa-envelope"></i></a>
-            </div>
-            <div class="footer__copyright">Wszelkie prawa zastrzeżone &copy; Dominik Drozd</div>
-        </footer>
+<div class="container">
+    <header class="header"></header>
+    <div class="jumbotron">
+        <h1 class="display-3">Witaj w aplikacji Personal Budget</h1>
+        <p class="lead">Ta aplikacja pozwoli Ci usystematyzować Twój budżet domowy. Dzięki temu będziesz miał kontrolę nad swoimi finansami.</p>
+        <hr class="my-4">
+        <div class="d-flex justify-content-center">
+            <img src="img/logo.png" class="header__logo img-fluid" alt="logo aplikacji">
+        </div>
     </div>
+    <div class="row">
+        <div class="col-6 text-center">
+            <p>
+                <button class="btn btn-primary w-100" type="button" data-toggle="collapse" data-target="#collapseSingUp" aria-expanded="false" aria-controls="collapseSingUp">
+                    Nowy? Zarejstruj się!
+                </button>
+            </p>
+            <div class="collapse" id="collapseSingUp">
+             <div class="card card-body mb-2">
+                <form class="card card-block bg-faded">
+                    <legend class="m-b-1 text-xs-center">Zarejestruj się</legend>
+                    <div class="form-group input-group">
+                        <span class="input-group-addon my-1"><i class="fas fa-user"></i></span>
+                        <label class="has-float-label">
+                            <input class="form-control" id="first" type="text" placeholder="Imię" required/>
+                            <span>Imię</span>
+                        </label>
+                    </div>
+                    <div class="form-group input-group">
+                        <span class="input-group-addon my-1"><i class="fas fa-envelope"></i></span>
+                        <label class="has-float-label">
+                            <input class="form-control" type="email" placeholder="email@example.com" required/>
+                            <span>Email</span>
+                        </label>
+                    </div>
+                    <div class="form-group input-group">
+                        <span class="input-group-addon my-1"><i class="fas fa-lock"></i></span>
+                        <label class="has-float-label">
+                            <input class="form-control" type="password" placeholder="••••••••" required/>
+                            <span>Hasło</span>
+                        </label>
+                    </div>
+                    <div class="form-group input-group">
+                        <span class="input-group-addon my-1"><i class="fas fa-lock"></i></span>
+                        <label class="has-float-label">
+                            <input class="form-control" type="password" placeholder="••••••••" required/>
+                            <span>Powtórz hasło</span>
+                        </label>
+                    </div>
+                    <button class="btn btn-block btn-primary" type="submit">Zarejestruj się!</button>
+                </form>
+            </div>
+        </div>
+
+        </div>
+        <div class="col-6 text-center">
+            <p>
+                <button class="btn btn-primary w-100" type="button" data-toggle="collapse" data-target="#collapseSingIn" aria-expanded="false" aria-controls="collapseSingIn">
+                   Masz już konto? Zaloguj się!
+                </button>
+            </p>
+            <div class="collapse" id="collapseSingIn">
+                <div class="card card-body">
+                    <form class="card card-block bg-faded">
+                        <legend class="m-b-1 text-xs-center">Zaloguj się</legend>
+                        <div class="form-group input-group">
+                            <span class="input-group-addon my-1"><i class="fas fa-envelope"></i></span>
+                            <label class="has-float-label">
+                                <input class="form-control" type="email" placeholder="email@example.com" required/>
+                                <span>Email</span>
+                            </label>
+                        </div>
+                        <div class="form-group input-group">
+                            <span class="input-group-addon my-1"><i class="fas fa-lock"></i></span>
+                            <label class="has-float-label">
+                                <input class="form-control" type="password" placeholder="••••••••" required/>
+                                <span>Hasło</span>
+                            </label>
+                        </div>
+                        <button class="btn btn-block btn-primary" type="submit">Zaloguj się!</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
 </body>
 </html>
