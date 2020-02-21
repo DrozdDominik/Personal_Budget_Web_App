@@ -1,106 +1,167 @@
 <!DOCTYPE html>
 <html lang="pl">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Show balance</title>
-    <link rel="stylesheet" href="css/style.css" type="text/css">
-    <link rel="stylesheet" href="node_modules/@fortawesome/fontawesome-free/css/all.min.css">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.rawgit.com/tonystar/bootstrap-float-label/v4.0.2/bootstrap-float-label.min.css"/>
     <link rel="shortcut icon" type="image/ico" href="img/favicon.png">
-    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    <link rel="stylesheet" href="node_modules/@fortawesome/fontawesome-free/css/all.css">
+    <link rel="stylesheet" href="css/style.css">
+    <title>Balance</title>
 </head>
 <body>
-    <div class="wrapper">
-        <header class="header">
-            <div class="header__slogan">Bilans</div>
-            <img src="img/logo.png" alt="" class="header__logo">
-        </header>
-        <nav class="nav">
-            <p class="nav__visible">Bieżący miesiąc</p>
-            <label class="nav__label">Wybierz okres bilansu:</label>  
-            <div class="nav__container">
-                <p class="nav__current-month">Bieżący miesiąc</p>
-                <p class="nav__previous-month">Poprzedni miesiąc</p>  
-                <p class="nav__current-year">Bieżący rok</p>      
-                <p class="nav__custom">Niestandardowy</p>  
-            </div> 
-            <p class="nav__date">Wybierz okres bilansu: 
-                <label class="date__start">Początek:
-                    <input type="date">
-                </label>
-                <label class="date__start">Koniec:
-                    <input type="date">
-                </label>
-            </p>
-        </nav>
-        <main class="main">
-            <div class="main__tables">
-                <table class="main__income">
-                <tr><th>Przychody</th></tr>
-                <tr><td>4000zł</td></tr>
-                <tr><th>Wynagrodzenie</th></tr>
-                <tr><td>1000zł</td></tr>
-                <tr><th>Odsetki bankowe</th></tr>
-                <tr><td>1000zł</td></tr>
-                <tr><th>Sprzedaż na allegro</th></tr>
-                <tr><td>1000zł</td></tr>
-                <tr><th>Inne</th></tr>
-                <tr><td>1000zł</td></tr>
-                </table>
-                <table class="main__expense">
-                    <tr><th>Wydatki</th></tr>
-                    <tr><td>11000zł</td></tr>
-                    <tr><th>Jedzenie</th></tr>
-                    <tr><td>1000zł</td></tr>
-                    <tr><th>Mieszkanie</th></tr>
-                    <tr><td>1000zł</td></tr>
-                    <tr><th>Transport</th></tr>
-                    <tr><td>1000zł</td></tr>
-                    <tr><th>Telekomunikacja</th></tr>
-                    <tr><td>1000zł</td></tr>
-                    <tr><th>Opieka zdrowotna</th></tr>
-                    <tr><td>1000zł</td></tr>
-                    <tr><th>Ubranie</th></tr>
-                    <tr><td>1000zł</td></tr>
-                    <tr><th>Higiena</th></tr>
-                    <tr><td>1000zł</td></tr>
-                    <tr><th>Dzieci</th></tr>
-                    <tr><td>1000zł</td></tr>
-                    <tr><th>Rozrywka</th></tr>
-                    <tr><td>1000zł</td></tr>
-                    <tr><th>Wycieczka</th></tr>
-                    <tr><td>1000zł</td></tr>
-                    <tr><th>Szkolenia</th></tr>
-                    <tr><td>1000zł</td></tr>
-                    <tr><th>Książki</th></tr>
-                    <tr><td>1000zł</td></tr>
-                    <tr><th>Oszczędności</th></tr>
-                    <tr><td>1000zł</td></tr>
-                    <tr><th>Na emeryturę</th></tr>
-                    <tr><td>1000zł</td></tr>
-                    <tr><th>Spłata długów</th></tr>
-                    <tr><td>1000zł</td></tr>
-                    <tr><th>Darowizna</th></tr>
-                    <tr><td>1000zł</td></tr>
-                    <tr><th>Inne wydatki</th></tr>
-                    <tr><td>1000zł</td></tr>
-                </table>
-                <table class="main__balance">
-                    <tr><th>Bilans</th></tr>
-                    <tr><td>-7000zł</td></tr>
-                </table>
-            <div id="piechart"></div>            
-            </main>
-        <footer class="footer">
-            <div class="footer__author">Kontakt z autorem: 
-                <a href="#"><i class="fab fa-facebook-square"></i></a> 
-                <a href="#"><i class="fas fa-envelope"></i></a>
+    <div class="container">
+        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+            <div class="container">
+                <p class="text-primary">Personal Budget</p>
+                <p class="ml-auto">Zalogowany jako:
+                    <span class="text-success">Dominik</span>
+                </p>
+                <button class="btn btn-danger ml-2">Wyloguj</button>
             </div>
-            <div class="footer__copyright">Wszelkie prawa zastrzeżone &copy; Dominik Drozd</div>
-        </footer>
+        </nav>
+        <header class="header"></header>
+        <div class="jumbotron">
+            <h1 class="display-4 text-center">Bilans</h1>
+            <p class="lead text-center text-success leadTarget">Bieżący miesiąc</p>
+            <hr class="my-4">
+            <div class="d-flex justify-content-center">
+                <img src="img/logo.png" class="header__logo img-fluid" alt="logo aplikacji">
+            </div>
+            <nav class="navbar navbar-expand-xl navbar-dark bg-dark">
+                <div class="dropdown">
+                    <button class="btn btn-dark text-success dropdown-toggle" type="button" id="dropdownMenu" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <i class="far fa-calendar-alt mr-1" ></i>Wybierz okres
+                    </button>
+                    <div class="dropdown-menu" aria-labelledby="dropdownMenu">
+                        <button class="dropdown-item" type="button">Bieżący miesiąc</button>
+                        <button class="dropdown-item" type="button">Poprzedni miesiąc</button>
+                        <button class="dropdown-item" type="button">Bieżący rok</button>
+                        <button class="dropdown-item" type="button" data-toggle="modal" data-target="#dateModal">Niestandardowy</button>
+                    </div>
+                </div>
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarMenu" aria-controls="navbarMenu" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse justify-content-center" id="navbarMenu">
+                    <ul class="navbar-nav">
+                        <li class="nav-item">
+                            <a href="income.html" class="nav-link"><i class="fas fa-wallet mr-1"></i>Dodaj przychód</a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="expense.html" class="nav-link"><i class="fas fa-shopping-cart mr-1"></i>Dodaj wydatek</a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="#" class="nav-link"><i class="fas fa-balance-scale mr-1"></i>Przeglądaj bilans</a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="#" class="nav-link"><i class="fas fa-wrench mr-1"></i>Ustawienia</a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="#" class="nav-link"><i class="fas fa-sign-out-alt mr-1"></i>Wyloguj się</a>
+                        </li>
+                    </ul>
+                </div>
+            </nav>
+        </div>
+        <div class="row">
+            <div class="col-12 text-center col-lg-6 mb-4">
+                <div class="card border-primary">
+                    <div class="card-body">
+                        <h5 class="card-title">Przychody</h5>
+                        <div class="card-header">
+                            Wynagrodzenie: 2500 zł
+                        </div>
+                        <ul class="list-group list-group-flush">
+                            <li class="list-group-item"><i class="fas fa-long-arrow-alt-right"></i> 05.02.2020 - Pensja: 2000 zł <i class="fas fa-edit"></i><i class="fas fa-trash-alt ml-1"></i> </li>
+                            <li class="list-group-item"><i class="fas fa-long-arrow-alt-right"></i> 07.02.2020 - Premia: 500 zł <i class="fas fa-edit"></i><i class="fas fa-trash-alt ml-1"></i> </li>
+                        </ul>
+                        <div class="card-header">
+                            Sprzedaż na Allegro: 300 zł
+                        </div>
+                        <ul class="list-group list-group-flush">
+                            <li class="list-group-item"><i class="fas fa-long-arrow-alt-right"></i> 01.02.2020 - Figurki: 200 zł <i class="fas fa-edit"></i><i class="fas fa-trash-alt ml-1"></i> </li>
+                            <li class="list-group-item"><i class="fas fa-long-arrow-alt-right"></i> 15.02.2020 - Karty: 50 zł <i class="fas fa-edit"></i><i class="fas fa-trash-alt ml-1"></i> </li>
+                            <li class="list-group-item"><i class="fas fa-long-arrow-alt-right"></i> 21.02.2020 - Książka: 50 zł <i class="fas fa-edit"></i><i class="fas fa-trash-alt ml-1"></i> </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="col-12 text-center col-lg-6">
+                <div class="card border-primary">
+                    <div class="card-body">
+                        <h5 class="card-title">Wydatki</h5>
+                        <div class="card-header">
+                            Jedzenie: 99.55 zł
+                        </div>
+                        <ul class="list-group list-group-flush">
+                            <li class="list-group-item"><i class="fas fa-long-arrow-alt-right"></i> 05.02.2020 - Spożywczy: 20 zł <i class="fas fa-edit"></i><i class="fas fa-trash-alt ml-1"></i> </li>
+                            <li class="list-group-item"><i class="fas fa-long-arrow-alt-right"></i> 07.02.2020 - Spożywczy: 50.32 zł <i class="fas fa-edit"></i><i class="fas fa-trash-alt ml-1"></i> </li>
+                            <li class="list-group-item"><i class="fas fa-long-arrow-alt-right"></i> 15.02.2020 - Piekarnia: 23.76 zł <i class="fas fa-edit"></i><i class="fas fa-trash-alt ml-1"></i> </li>
+                            <li class="list-group-item"><i class="fas fa-long-arrow-alt-right"></i> 17.02.2020 - Targ: 5.47 zł <i class="fas fa-edit"></i><i class="fas fa-trash-alt ml-1"></i> </li>
+                        </ul>
+                        <div class="card-header">
+                        Transport: 153.80 zł
+                        </div>
+                        <ul class="list-group list-group-flush">
+                            <li class="list-group-item"><i class="fas fa-long-arrow-alt-right"></i> 01.02.2020 - Bilet miesięczny: 150 zł <i class="fas fa-edit"></i><i class="fas fa-trash-alt ml-1"></i> </li>
+                            <li class="list-group-item"><i class="fas fa-long-arrow-alt-right"></i> 15.02.2020 - Autobus: 3.80 zł <i class="fas fa-edit"></i><i class="fas fa-trash-alt ml-1"></i> </li>
+                        </ul>
+                        <div class="card-header">
+                            Mieszkanie: 553.40 zł
+                        </div>
+                        <ul class="list-group list-group-flush">
+                            <li class="list-group-item"><i class="fas fa-long-arrow-alt-right"></i> 02.02.2020 - Czynsz: 553.40 zł <i class="fas fa-edit"></i><i class="fas fa-trash-alt ml-1"></i> </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-12 my-4">
+            <div class="card border-primary">
+                <div class="card-body">
+                    <h5 class="card-title text-center display-4">Bilans</h5>
+                    <div class="card-header text-success display-4 text-center">
+                        1993.25 zł
+                    </div>
+                    <p class="card-footer text-primary text-center">Gratulacje. Świetnie zarządzasz finansami!</p>
+                </div>
+                </div>
+            </div>
+        </div>
+        <div class="display-4 text-center">Wydatki</div>
+        <div id="chartWrap"> </div>
+         <div id="piechart"></div>
+    </div>
+    <div class="modal" tabindex="-1" role="dialog" id="dateModal">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Wybierz zakres dat:</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <p>Zakres od:</p>
+                    <input type="date">
+                    <span>do</span>
+                    <input type="date">
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Anuluj</button>
+                    <button type="button" class="btn btn-primary">Zapisz</button>
+                </div>
+            </div>
+        </div>
     </div>
 
-    <script src="script_balance.js"></script>
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    <script src="balanceScript.js"></script>
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
 </body>
 </html>
