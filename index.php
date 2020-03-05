@@ -1,6 +1,11 @@
 <?php
 session_start();
 
+if(isset($_SESSION['logged_id']))
+{
+    header('Location: menu.php');
+}
+
 ?>
 
 <!doctype html>
@@ -26,6 +31,9 @@ session_start();
                 <img src="img/logo.png" class="header__logo img-fluid" alt="logo aplikacji">
             </div>
             <?php
+            echo isset($_SESSION['err_email']) ? '<p class="display-4 text-center text-danger">Błąd logowania! Spróbuj ponownie!</p>': '';
+            echo isset($_SESSION['bad_attempt']) ? '<p class="display-4 text-center text-danger">Błędny email lub hasło! Spróbuj ponownie!</p>': '';
+            unset($_SESSION['bad_attempt']);
             echo isset($_SESSION['e_registration']) ? '<p class="display-4 text-center text-danger">Błąd rejestracji! Spróbuj ponownie!</p>': '';
             unset($_SESSION['e_registration']);
             ?>
@@ -123,15 +131,24 @@ session_start();
             </p>
             <div class="collapse" id="collapseSingIn">
                 <div class="card card-body">
-                    <form method="post" action="#" class="card card-block bg-faded">
+                    <form method="post" action="login.php" class="card card-block bg-faded">
                         <label class="form-control-lg text-xs-center">Zaloguj się</label>
                         <div class="form-group input-group">
                             <span class="input-group-addon my-1"><i class="fas fa-envelope"></i></span>
                             <label class="has-float-label">
-                                <input class="form-control" type="email" name="email" placeholder="email@example.com" required/>
+                                <input class="form-control" type="email" name="email" placeholder="email@example.com" <?= isset($_SESSION['given_email']) ? 'value="'.$_SESSION['given_email'].'"' : '';
+                                unset($_SESSION['given_email']);
+                                ?> required/>
                                 <span>Email</span>
                             </label>
                         </div>
+                        <?php
+                        if(isset($_SESSION['err_email']))
+                        {
+                            echo'<div class="text-danger">Podano niepoprawny format adresu email</div>';
+                            unset($_SESSION['err_email']);
+                        }
+                        ?>
                         <div class="form-group input-group">
                             <span class="input-group-addon my-1"><i class="fas fa-lock"></i></span>
                             <label class="has-float-label">
