@@ -46,19 +46,19 @@ if(!isset($_SESSION['logged_id']))
             <div class="collapse navbar-collapse justify-content-center" id="navbarMenu">
                 <ul class="navbar-nav">
                     <li class="nav-item">
-                        <a href="#" class="nav-link"><i class="fas fa-wallet mr-1"></i>Dodaj przychód</a>
+                        <a href="income.php" class="nav-link"><i class="fas fa-wallet mr-1"></i>Dodaj przychód</a>
                     </li>
                     <li class="nav-item">
-                        <a href="income.html" class="nav-link"><i class="fas fa-shopping-cart mr-1"></i>Dodaj wydatek</a>
+                        <a href="expense.php" class="nav-link"><i class="fas fa-shopping-cart mr-1"></i>Dodaj wydatek</a>
                     </li>
                     <li class="nav-item">
-                        <a href="expense.html" class="nav-link"><i class="fas fa-balance-scale mr-1"></i>Przeglądaj bilans</a>
+                        <a href="balance.php" class="nav-link"><i class="fas fa-balance-scale mr-1"></i>Przeglądaj bilans</a>
                     </li>
                     <li class="nav-item">
                         <a href="#" class="nav-link"><i class="fas fa-wrench mr-1"></i>Ustawienia</a>
                     </li>
                     <li class="nav-item">
-                        <a href="#" class="nav-link"><i class="fas fa-sign-out-alt mr-1"></i>Wyloguj się</a>
+                        <a href="logout.php" class="nav-link"><i class="fas fa-sign-out-alt mr-1"></i>Wyloguj się</a>
                     </li>
                 </ul>
             </div>

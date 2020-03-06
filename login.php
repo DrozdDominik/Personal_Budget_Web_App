@@ -12,6 +12,7 @@ if(!isset($_SESSION['logged_id']))
             $_SESSION['err_email'] = true;
             $_SESSION['given_email'] = $_POST['email'];
             header('Location: index.php');
+            exit();
         } else {
             require_once 'database.php';
             $sql = 'SELECT id, username, password FROM `users` WHERE email = :email';

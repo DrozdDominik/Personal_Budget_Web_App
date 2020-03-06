@@ -7,7 +7,7 @@ if(isset($_POST['user_name']))
 
     $name = $_POST['user_name'];
 
-    if((strlen(($name)) < 2) || (strlen(($name)) > 12))
+   if((strlen(($name)) < 2) || (strlen(($name)) > 12))
     {
         $all_correct =  false;
         $_SESSION['e_registration'] = true;
@@ -66,18 +66,34 @@ if(isset($_POST['user_name']))
     {
         $all_correct =  false;
         $_SESSION['e_registration'] = true;
-        $_SESSION['e_email'] = "Konto przypisane do podanego adresu email już istnieje";
+        $_SESSION['e_email'] = "Konto przypisane do podanego adresu email już istnieje";          
     }
 
     if($all_correct)
     {
-        $sql_insert = "INSERT INTO users VALUES (NULL, :username, :password, :email)";
-        $query = $db->prepare($sql_insert);
-        $query->bindValue(':username', $name, PDO::PARAM_STR);
-        $query->bindValue(':password', $password_hash, PDO::PARAM_STR);
-        $query->bindValue(':email', $email, PDO::PARAM_STR);
-        $query->execute();
+        $sql_insert_user = "INSERT INTO users VALUES (NULL, :username, :password, :email)";
+        $sql_insert_incomes = "INSERT INTO incomes_category_assigned_to_users (user_id, name) SELECT users.id, incomes_category_default.name FROM users, incomes_category_default WHERE users.email= :email";
+        $sql_insert_expenses ="INSERT INTO expenses_category_assigned_to_users (user_id, name) SELECT users.id, expenses_category_default.name FROM users, expenses_category_default WHERE users.email= :email";
+        $sql_insert_payment ="INSERT INTO payment_methods_assigned_to_users (user_id, name) SELECT users.id, payment_methods_default.name FROM users, payment_methods_default WHERE users.email= :email";
+        $query_user = $db->prepare($sql_insert_user);
+        $query_user->bindValue(':username', $name, PDO::PARAM_STR);
+        $query_user->bindValue(':password', $password_hash, PDO::PARAM_STR);
+        $query_user->bindValue(':email', $email, PDO::PARAM_STR);
+        $query_user->execute();
+        $query_incomes = $db->prepare($sql_insert_incomes);
+        $query_incomes->bindValue(':email', $email, PDO::PARAM_STR);
+        $query_incomes->execute();
+        $query_expenses = $db->prepare($sql_insert_expenses);
+        $query_expenses->bindValue(':email', $email, PDO::PARAM_STR);
+        $query_expenses->execute();
+        $query_payment = $db->prepare($sql_insert_payment);
+        $query_payment->bindValue(':email', $email, PDO::PARAM_STR);
+        $query_payment->execute();
+
         $_SESSION['correct_registration'] = true;
+        unset($_SESSION['form_name']);
+        unset($_SESSION['form_email']);
+        unset($_SESSION['form_password']);
         header('Location: congratulation.php');
         exit();
     }
