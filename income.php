@@ -6,6 +6,7 @@ if(!isset($_SESSION['logged_id']))
     header('Location: index.php');
 }
 
+$current_date = new DateTime();
 ?>
 
 <!DOCTYPE html>
@@ -49,10 +50,10 @@ if(!isset($_SESSION['logged_id']))
                 <div class="collapse navbar-collapse justify-content-center" id="navbarMenu">
                     <ul class="navbar-nav">
                         <li class="nav-item">
-                            <a href="income.html" class="nav-link"><i class="fas fa-wallet mr-1"></i>Dodaj przychód</a>
+                            <a href="income.php" class="nav-link"><i class="fas fa-wallet mr-1"></i>Dodaj przychód</a>
                         </li>
                         <li class="nav-item">
-                            <a href="expense.html" class="nav-link"><i class="fas fa-shopping-cart mr-1"></i>Dodaj wydatek</a>
+                            <a href="expense.php" class="nav-link"><i class="fas fa-shopping-cart mr-1"></i>Dodaj wydatek</a>
                         </li>
                         <li class="nav-item">
                             <a href="#" class="nav-link"><i class="fas fa-balance-scale mr-1"></i>Przeglądaj bilans</a>
@@ -74,7 +75,13 @@ if(!isset($_SESSION['logged_id']))
                 <form method="post" action="add_income.php">
                     <div class="form-group">
                         <label for="amount">Kwota</label>
-                        <input type="number" class="form-control" step="0.01" min="0.01" id="amount" name="income_amount">
+                        <input type="number" class="form-control" step="0.01" min="0.01" id="amount" name="income_amount" value="<?php 
+                                if(isset($_SESSION['income_form_amount']))
+                                {
+                                   echo $_SESSION['income_form_amount'];       
+                                } 
+                                unset($_SESSION['income_form_amount']);
+                                ?>">
                     </div>
                     <?php
                         if(isset($_SESSION['e_income_amount']))
@@ -85,26 +92,70 @@ if(!isset($_SESSION['logged_id']))
                         ?>
                     <div class="form-group">
                         <label for="date">Data</label>
-                        <input type="date" class="form-control" id="date" name="income_date">
+                        <input type="date" class="form-control" id="date" name="income_date" value="<?php 
+                          if(isset($_SESSION['income_form_date']))
+                          {
+                             echo $_SESSION['income_form_date'];  
+                             unset($_SESSION['income_form_date']); 
+                          }
+                          else
+                          {
+                            echo $current_date->format('Y-m-d');     
+                          }         
+                         ?>">
                     </div>
                     <label class="form-check-label">Kategoria:</label>
                     <div class="form-check" id="radioInputs">
-                        <input class="form-check-input" type="radio" name="income_category" id="salary" value="Salary">
+                        <input class="form-check-input" type="radio" name="income_category" id="salary" value="Salary" <?php 
+                        if(isset($_SESSION['income_form_category']))
+                        {
+                            echo ($_SESSION['income_form_category'] == 'Salary') ?  "checked" : "";
+                        }   
+                        ?>>
                         <label class="form-check-label" for="salary">Wynagrodzenie</label>
                     </div>
                     <div class="form-check">
-                        <input class="form-check-input" type="radio" name="income_category" id="interest" value="Interest">
+                        <input class="form-check-input" type="radio" name="income_category" id="interest" value="Interest" <?php 
+                        if(isset($_SESSION['income_form_category']))
+                        {
+                            echo ($_SESSION['income_form_category'] == 'Interest') ?  "checked" : "";
+                        }   
+                        ?>>
                         <label class="form-check-label" for="interest">Odsetki bankowe</label>
                     </div>
                     <div class="form-check">
-                        <input class="form-check-input" type="radio" name="income_category" id="allegro" value="Allegro">
+                        <input class="form-check-input" type="radio" name="income_category" id="allegro" value="Allegro" <?php 
+                        if(isset($_SESSION['income_form_category']))
+                        {
+                            echo ($_SESSION['income_form_category'] == 'Allegro') ?  "checked" : "";
+                        }   
+                        ?>>
                         <label class="form-check-label" for="allegro">Sprzedaż na Allegro</label>
                     </div>
                     <div class="form-check">
-                        <input class="form-check-input" type="radio" name="income_category" id="other" value="Another">
+                        <input class="form-check-input" type="radio" name="income_category" id="other" value="Another" <?php
+                        if(isset($_SESSION['income_form_category']))
+                        { 
+                        echo ($_SESSION['income_form_category'] == 'Another') ?  "checked" : ""; 
+                        unset($_SESSION['income_form_category']); 
+                        }
+                        ?>>
                         <label class="form-check-label" for="other">Inne</label>
                     </div>
-                    <textarea class="form-control my-3 textarea" placeholder="Komentarz (opcjonalnie)" name="comment" rows="4" cols="30"></textarea>
+                    <?php
+                        if(isset($_SESSION['e_income_category']))
+                        {
+                            echo'<div class="text-danger">'.$_SESSION['e_income_category'].'</div>';
+                            unset($_SESSION['e_income_category']);
+                        }
+                        ?>
+                    <textarea class="form-control my-3 textarea" placeholder="Komentarz (opcjonalnie)" name="comment" rows="4" cols="30"><?php 
+                    if(isset($_SESSION['income_form_comment']))
+                    {
+                        echo $_SESSION['income_form_comment'];
+                        unset($_SESSION['income_form_comment']);
+                    } 
+                    ?></textarea>
                     <?php
                         if(isset($_SESSION['e_income_comment']))
                         {
@@ -113,7 +164,7 @@ if(!isset($_SESSION['logged_id']))
                         }
                         ?>
                     <input type="submit" value="Dodaj!" class="btn btn-primary">
-                    <input type="button" value="Anuluj" class="btn btn-danger cancelBtn">
+                    <a href="clean_income.php" class="btn btn-danger cancelBtn">Anuluj</a>
                 </form>
             </div>
         </div>
