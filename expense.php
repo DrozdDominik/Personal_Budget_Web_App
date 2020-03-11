@@ -236,7 +236,7 @@ $current_date = new DateTime();
                             {
                                 echo ($_SESSION['expense_form_category'] == 'Gift') ?  "selected" : "";
                             }   
-                            ?>>Darownizna</option>
+                            ?>>Darowizna</option>
                             <option value="Another"<?php 
                             if(isset($_SESSION['expense_form_category']))
                             {

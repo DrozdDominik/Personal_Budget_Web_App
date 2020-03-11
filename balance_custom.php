@@ -91,7 +91,7 @@ $current_date = new DateTime();
                             require_once 'database.php';
                             $id_user = $_SESSION['logged_id']; 
                                             
-                                $sql_balance_incomes = "SELECT category_incomes.name as Category, SUM(incomes.amount) as Amount FROM incomes INNER JOIN incomes_category_assigned_to_users as category_incomes WHERE incomes.income_category_assigned_to_user_id = category_incomes.id AND incomes.user_id= :id_user AND incomes.date_of_income BETWEEN :first_date AND :second_date GROUP BY Category";
+                                $sql_balance_incomes = "SELECT category_incomes.name as Category, SUM(incomes.amount) as Amount FROM incomes INNER JOIN incomes_category_assigned_to_users as category_incomes WHERE incomes.income_category_assigned_to_user_id = category_incomes.id AND incomes.user_id= :id_user AND incomes.date_of_income BETWEEN :first_date AND :second_date GROUP BY Category ORDER BY Amount DESC";
                                 $query_select_incomes_sum = $db->prepare($sql_balance_incomes);
                                 $query_select_incomes_sum->bindValue(':id_user', $id_user, PDO::PARAM_INT);
                                 $query_select_incomes_sum->bindValue(':first_date', $_SESSION['first_date'], PDO::PARAM_STR);
@@ -102,7 +102,7 @@ $current_date = new DateTime();
                             
                                 foreach($result_sum_of_incomes as $custom_incomes)
                                 {
-                                    $sql_incomes_details = "SELECT incomes.date_of_income as Date, incomes.income_comment as Comment, incomes.amount as Amount FROM incomes INNER JOIN incomes_category_assigned_to_users as category_incomes WHERE incomes.income_category_assigned_to_user_id = category_incomes.id AND incomes.user_id= :id_user AND incomes.date_of_income BETWEEN :first_date AND :second_date AND category_incomes.name = :category_name";
+                                    $sql_incomes_details = "SELECT incomes.date_of_income as Date, incomes.income_comment as Comment, incomes.amount as Amount FROM incomes INNER JOIN incomes_category_assigned_to_users as category_incomes WHERE incomes.income_category_assigned_to_user_id = category_incomes.id AND incomes.user_id= :id_user AND incomes.date_of_income BETWEEN :first_date AND :second_date AND category_incomes.name = :category_name ORDER BY Date";
                                     $query_select_incomes_details = $db->prepare($sql_incomes_details);
                                     $query_select_incomes_details->bindValue(':id_user', $id_user, PDO::PARAM_INT);
                                     $query_select_incomes_details->bindValue(':first_date', $_SESSION['first_date'], PDO::PARAM_STR); 
@@ -127,7 +127,7 @@ $current_date = new DateTime();
                     <div class="card-body">
                         <h5 class="card-title">Wydatki</h5>
                             <?php 
-                                $sql_balance_expenses = "SELECT category_expenses.name as Category, SUM(expenses.amount) as Amount FROM expenses INNER JOIN expenses_category_assigned_to_users as category_expenses WHERE expenses.expense_category_assigned_to_user_id = category_expenses.id AND expenses.user_id= :id_user AND expenses.date_of_expense BETWEEN :first_date AND :second_date GROUP BY Category";
+                                $sql_balance_expenses = "SELECT category_expenses.name as Category, SUM(expenses.amount) as Amount FROM expenses INNER JOIN expenses_category_assigned_to_users as category_expenses WHERE expenses.expense_category_assigned_to_user_id = category_expenses.id AND expenses.user_id= :id_user AND expenses.date_of_expense BETWEEN :first_date AND :second_date GROUP BY Category ORDER BY Amount DESC";
                                 $query_select_expenses_sum = $db->prepare($sql_balance_expenses);
                                 $query_select_expenses_sum->bindValue(':id_user', $id_user, PDO::PARAM_INT);
                                 $query_select_expenses_sum->bindValue(':first_date', $_SESSION['first_date'], PDO::PARAM_STR);
@@ -138,7 +138,7 @@ $current_date = new DateTime();
                             
                                 foreach($result_sum_of_expenses as $custom_expenses)
                                 {
-                                    $sql_expenses_details = "SELECT expenses.date_of_expense as Date, expenses.expense_comment as Comment, expenses.amount as Amount FROM expenses INNER JOIN expenses_category_assigned_to_users as category_expenses WHERE expenses.expense_category_assigned_to_user_id = category_expenses.id AND expenses.user_id= :id_user AND expenses.date_of_expense BETWEEN :first_date AND :second_date AND category_expenses.name = :category_name";
+                                    $sql_expenses_details = "SELECT expenses.date_of_expense as Date, expenses.expense_comment as Comment, expenses.amount as Amount FROM expenses INNER JOIN expenses_category_assigned_to_users as category_expenses WHERE expenses.expense_category_assigned_to_user_id = category_expenses.id AND expenses.user_id= :id_user AND expenses.date_of_expense BETWEEN :first_date AND :second_date AND category_expenses.name = :category_name ORDER BY Date";
                                     $query_select_expenses_details = $db->prepare($sql_expenses_details);
                                     $query_select_expenses_details->bindValue(':id_user', $id_user, PDO::PARAM_INT);
                                     $query_select_expenses_details->bindValue(':first_date', $_SESSION['first_date'], PDO::PARAM_STR); 

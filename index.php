@@ -43,7 +43,7 @@ if(isset($_SESSION['logged_id']))
         <div class="col-12 text-center col-md-6">
             <p>
                 <button class="btn btn-primary w-100" type="button" data-toggle="collapse" data-target="#collapseSingUp" aria-expanded="false" aria-controls="collapseSingUp">
-                    Nowy? Zarejstruj się!
+                    Nowy? Zarejestruj się!
                 </button>
             </p>
             <div class="collapse" id="collapseSingUp">
